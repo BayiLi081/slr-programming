@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_77be3dce3d0fb662617d025a1f0dfdcf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_77be3dce3d0fb662617d025a1f0dfdcf" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_77be3dce3d0fb662617d025a1f0dfdcf = L.map(
+                "map_77be3dce3d0fb662617d025a1f0dfdcf",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_528489454f1c4819a9e9138831309d66 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_528489454f1c4819a9e9138831309d66.addTo(map_77be3dce3d0fb662617d025a1f0dfdcf);
+        
+    
+            var marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var circle_marker_aaea580a4e89cb64b828cfdc5267b4e9 = L.circleMarker(
+                [52.64949613, 1.254216236],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_cc7b279c2a2b9cc465439fec3de8063d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_208a8e77df4a56bb315393d95316d21f = $(`<div id="html_208a8e77df4a56bb315393d95316d21f" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_23</b> is <br> <u>East Anglia, UK</u></div>`)[0];
+                popup_cc7b279c2a2b9cc465439fec3de8063d.setContent(html_208a8e77df4a56bb315393d95316d21f);
+            
+        
+
+        circle_marker_aaea580a4e89cb64b828cfdc5267b4e9.bindPopup(popup_cc7b279c2a2b9cc465439fec3de8063d)
+        ;
+
+        
+    
+    
+            var circle_marker_4b96c2f76fb96e465a5aa3c626040d32 = L.circleMarker(
+                [13.00449643, 77.58566655],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_e3889582c7bef1ebe7b30011d3865726 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2b06298dcdd0c07a4273648ac86a829c = $(`<div id="html_2b06298dcdd0c07a4273648ac86a829c" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_34</b> is <br> <u>Bangalore, India</u></div>`)[0];
+                popup_e3889582c7bef1ebe7b30011d3865726.setContent(html_2b06298dcdd0c07a4273648ac86a829c);
+            
+        
+
+        circle_marker_4b96c2f76fb96e465a5aa3c626040d32.bindPopup(popup_e3889582c7bef1ebe7b30011d3865726)
+        ;
+
+        
+    
+    
+            var circle_marker_3885c968c89c333d7d83e4cb70906590 = L.circleMarker(
+                [38.87874127, 115.4452033],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_e3e03a515db0eaaff5658d662b7f561c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3361ac30fe08412069e0da1407e9558 = $(`<div id="html_d3361ac30fe08412069e0da1407e9558" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_35</b> is <br> <u>Baoding, China</u></div>`)[0];
+                popup_e3e03a515db0eaaff5658d662b7f561c.setContent(html_d3361ac30fe08412069e0da1407e9558);
+            
+        
+
+        circle_marker_3885c968c89c333d7d83e4cb70906590.bindPopup(popup_e3e03a515db0eaaff5658d662b7f561c)
+        ;
+
+        
+    
+    
+            var circle_marker_206176ecdc60d4f33adc7fae87a8259f = L.circleMarker(
+                [43.6758091, -79.39109514],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_49b00a46afcfe0eb107dcfca6aa681aa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4cfe9b25da5900de5bb7026eff560b73 = $(`<div id="html_4cfe9b25da5900de5bb7026eff560b73" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_87</b> is <br> <u>Toronto, Metro Vancouver, and Calgary in Canada</u></div>`)[0];
+                popup_49b00a46afcfe0eb107dcfca6aa681aa.setContent(html_4cfe9b25da5900de5bb7026eff560b73);
+            
+        
+
+        circle_marker_206176ecdc60d4f33adc7fae87a8259f.bindPopup(popup_49b00a46afcfe0eb107dcfca6aa681aa)
+        ;
+
+        
+    
+    
+            var circle_marker_83c10f013117227ce6d0527bfc7e7c3a = L.circleMarker(
+                [42.8853745, -78.87956121],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_e8f2cd6479eac517da8002e61fcad829 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_91ff5781c806aa2de1ca15f800f2eb40 = $(`<div id="html_91ff5781c806aa2de1ca15f800f2eb40" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_88</b> is <br> <u>Buffalo, USA</u></div>`)[0];
+                popup_e8f2cd6479eac517da8002e61fcad829.setContent(html_91ff5781c806aa2de1ca15f800f2eb40);
+            
+        
+
+        circle_marker_83c10f013117227ce6d0527bfc7e7c3a.bindPopup(popup_e8f2cd6479eac517da8002e61fcad829)
+        ;
+
+        
+    
+    
+            var circle_marker_3efe95d9f3d6ed9b45b2b70d284a048e = L.circleMarker(
+                [-23.22030142, -45.90555982],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1eb8bfd82348419f7aaa5126fa960282 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_031977143e377fee62d21a5cc67021bd = $(`<div id="html_031977143e377fee62d21a5cc67021bd" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_98</b> is <br> <u>São José dos Campos, Brazil</u></div>`)[0];
+                popup_1eb8bfd82348419f7aaa5126fa960282.setContent(html_031977143e377fee62d21a5cc67021bd);
+            
+        
+
+        circle_marker_3efe95d9f3d6ed9b45b2b70d284a048e.bindPopup(popup_1eb8bfd82348419f7aaa5126fa960282)
+        ;
+
+        
+    
+    
+            var circle_marker_cae38c4f895f03110a278b27bf7ed64e = L.circleMarker(
+                [50.84944445, 4.35309282],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_f34b49eba935d570d04675f926d7fc3b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_09e37520a72f65b73040e93f93f7419e = $(`<div id="html_09e37520a72f65b73040e93f93f7419e" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_105</b> is <br> <u>Belgium, Bulgaria, Germany, Spain, Portugal</u></div>`)[0];
+                popup_f34b49eba935d570d04675f926d7fc3b.setContent(html_09e37520a72f65b73040e93f93f7419e);
+            
+        
+
+        circle_marker_cae38c4f895f03110a278b27bf7ed64e.bindPopup(popup_f34b49eba935d570d04675f926d7fc3b)
+        ;
+
+        
+    
+    
+            var circle_marker_5d6eaf711c9d3156a7fd020064614bbc = L.circleMarker(
+                [24.89994242, 67.03329152],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_80069c1d8d5aa6b5cc3da06ce8415d5f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_92a11a5acce758fb90d315cea1c68d5e = $(`<div id="html_92a11a5acce758fb90d315cea1c68d5e" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_114</b> is <br> <u>Karachi, Pakistan</u></div>`)[0];
+                popup_80069c1d8d5aa6b5cc3da06ce8415d5f.setContent(html_92a11a5acce758fb90d315cea1c68d5e);
+            
+        
+
+        circle_marker_5d6eaf711c9d3156a7fd020064614bbc.bindPopup(popup_80069c1d8d5aa6b5cc3da06ce8415d5f)
+        ;
+
+        
+    
+    
+            var circle_marker_2c5b9981cf16e453f54df675beda790f = L.circleMarker(
+                [33.89490558, 35.5011948],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_c92503343763df6cfbf895b1a658a110 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_caa487277f46c1446b0754496d58ee09 = $(`<div id="html_caa487277f46c1446b0754496d58ee09" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_128</b> is <br> <u>Beirut, Lebanon</u></div>`)[0];
+                popup_c92503343763df6cfbf895b1a658a110.setContent(html_caa487277f46c1446b0754496d58ee09);
+            
+        
+
+        circle_marker_2c5b9981cf16e453f54df675beda790f.bindPopup(popup_c92503343763df6cfbf895b1a658a110)
+        ;
+
+        
+    
+    
+            var circle_marker_0463c9029d5882f4fd90ab538d308254 = L.circleMarker(
+                [10.06587317, 105.6097929],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_dc26692c84892b1ff1b6d59655c04615 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_99eb0b539bdafe6eef4f21d2a298a1bb = $(`<div id="html_99eb0b539bdafe6eef4f21d2a298a1bb" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_138</b> is <br> <u>MKD region of Vietnam</u></div>`)[0];
+                popup_dc26692c84892b1ff1b6d59655c04615.setContent(html_99eb0b539bdafe6eef4f21d2a298a1bb);
+            
+        
+
+        circle_marker_0463c9029d5882f4fd90ab538d308254.bindPopup(popup_dc26692c84892b1ff1b6d59655c04615)
+        ;
+
+        
+    
+    
+            var circle_marker_44f444e88e467b70d987ef14665de513 = L.circleMarker(
+                [45.44636973, 9.124230504],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_0195b3e5bfe5ee55e4d96b438bf9af8d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9b175f68ea7890d2bcf049d20a6eb7aa = $(`<div id="html_9b175f68ea7890d2bcf049d20a6eb7aa" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_142</b> is <br> <u>Lorenteggio, Milan, Italy</u></div>`)[0];
+                popup_0195b3e5bfe5ee55e4d96b438bf9af8d.setContent(html_9b175f68ea7890d2bcf049d20a6eb7aa);
+            
+        
+
+        circle_marker_44f444e88e467b70d987ef14665de513.bindPopup(popup_0195b3e5bfe5ee55e4d96b438bf9af8d)
+        ;
+
+        
+    
+    
+            var circle_marker_c5cdf95e62cce8278817b3fd939a2209 = L.circleMarker(
+                [32.73026887, -117.1340251],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1f4f63f79cb6913aafbbddf661f4ea65 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fa23b756365fd8f34255219766d43f34 = $(`<div id="html_fa23b756365fd8f34255219766d43f34" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_156</b> is <br> <u>San Diego, USA</u></div>`)[0];
+                popup_1f4f63f79cb6913aafbbddf661f4ea65.setContent(html_fa23b756365fd8f34255219766d43f34);
+            
+        
+
+        circle_marker_c5cdf95e62cce8278817b3fd939a2209.bindPopup(popup_1f4f63f79cb6913aafbbddf661f4ea65)
+        ;
+
+        
+    
+    
+            var circle_marker_200da75f1f2f4361502afc190bd5c81f = L.circleMarker(
+                [52.36388045, 4.879300814],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_c9f413d9193fc8e122b75c7a47f66995 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1d06db542982723abda6dcfdc11011d8 = $(`<div id="html_1d06db542982723abda6dcfdc11011d8" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_339</b> is <br> <u>Amsterdam, Netherlands</u></div>`)[0];
+                popup_c9f413d9193fc8e122b75c7a47f66995.setContent(html_1d06db542982723abda6dcfdc11011d8);
+            
+        
+
+        circle_marker_200da75f1f2f4361502afc190bd5c81f.bindPopup(popup_c9f413d9193fc8e122b75c7a47f66995)
+        ;
+
+        
+    
+    
+            var circle_marker_c7811e86e6125a065c3dcabb0a76a200 = L.circleMarker(
+                [45.5492237, 13.73014025],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1e547196d525c5ede42c3d3907b2f724 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d39cc93258bdbe86eff19ba90c39e7b7 = $(`<div id="html_d39cc93258bdbe86eff19ba90c39e7b7" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_446</b> is <br> <u>Koper, Slovenia</u></div>`)[0];
+                popup_1e547196d525c5ede42c3d3907b2f724.setContent(html_d39cc93258bdbe86eff19ba90c39e7b7);
+            
+        
+
+        circle_marker_c7811e86e6125a065c3dcabb0a76a200.bindPopup(popup_1e547196d525c5ede42c3d3907b2f724)
+        ;
+
+        
+    
+    
+            var circle_marker_ed573ed4a2009d191f1feeb9d1373c9a = L.circleMarker(
+                [42.36477794, -71.08263929],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_d690d57f335aae255e159e0b3dcfc700 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a868fb68979c958696bdc9f55df4fc5c = $(`<div id="html_a868fb68979c958696bdc9f55df4fc5c" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_4</b> is <br> <u>Kendall Square, Cambridge, Massachusetts, USA</u></div>`)[0];
+                popup_d690d57f335aae255e159e0b3dcfc700.setContent(html_a868fb68979c958696bdc9f55df4fc5c);
+            
+        
+
+        circle_marker_ed573ed4a2009d191f1feeb9d1373c9a.bindPopup(popup_d690d57f335aae255e159e0b3dcfc700)
+        ;
+
+        
+    
+    
+            var circle_marker_80fc6d96a6d5bd463e186d4d5f11ea13 = L.circleMarker(
+                [-27.46191538, 153.0074565],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_c95a6d165d177b554c8d763f7f507183 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_806f8b68bb8055e8438e6679fd80f734 = $(`<div id="html_806f8b68bb8055e8438e6679fd80f734" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_46</b> is <br> <u>Brisbane, Australia</u></div>`)[0];
+                popup_c95a6d165d177b554c8d763f7f507183.setContent(html_806f8b68bb8055e8438e6679fd80f734);
+            
+        
+
+        circle_marker_80fc6d96a6d5bd463e186d4d5f11ea13.bindPopup(popup_c95a6d165d177b554c8d763f7f507183)
+        ;
+
+        
+    
+    
+            var circle_marker_5523f7393b0e6839eccd901179fc6658 = L.circleMarker(
+                [36.57601862, 136.6495091],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_d53ae908a6cc1b4f8a948b4789134d4c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8455be7333a927294220d84bad694314 = $(`<div id="html_8455be7333a927294220d84bad694314" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_39</b> is <br> <u>Kanazawa, Japan</u></div>`)[0];
+                popup_d53ae908a6cc1b4f8a948b4789134d4c.setContent(html_8455be7333a927294220d84bad694314);
+            
+        
+
+        circle_marker_5523f7393b0e6839eccd901179fc6658.bindPopup(popup_d53ae908a6cc1b4f8a948b4789134d4c)
+        ;
+
+        
+    
+    
+            var circle_marker_b2afbe0a7127aa8939c971251bc3fc8f = L.circleMarker(
+                [53.80326502, -1.546717914],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_f3ab43a3d585cda655b0e8c7fba00861 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9b845d81701a19fda02c51d1b9e2484f = $(`<div id="html_9b845d81701a19fda02c51d1b9e2484f" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_70</b> is <br> <u>EASEL, UK</u></div>`)[0];
+                popup_f3ab43a3d585cda655b0e8c7fba00861.setContent(html_9b845d81701a19fda02c51d1b9e2484f);
+            
+        
+
+        circle_marker_b2afbe0a7127aa8939c971251bc3fc8f.bindPopup(popup_f3ab43a3d585cda655b0e8c7fba00861)
+        ;
+
+        
+    
+    
+            var circle_marker_83969497c017e9538b2b72fb0429faa4 = L.circleMarker(
+                [44.64635883, -63.58345276],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_fa69ba9cce12c7dc2e9f95ec06049eb5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e934b5cdd5f8c48f500766a3f8c03424 = $(`<div id="html_e934b5cdd5f8c48f500766a3f8c03424" style="width: 100.0%; height: 100.0%;">The study area for <b>sd_cst2_0</b> is <br> <u>Halifax, Canada</u></div>`)[0];
+                popup_fa69ba9cce12c7dc2e9f95ec06049eb5.setContent(html_e934b5cdd5f8c48f500766a3f8c03424);
+            
+        
+
+        circle_marker_83969497c017e9538b2b72fb0429faa4.bindPopup(popup_fa69ba9cce12c7dc2e9f95ec06049eb5)
+        ;
+
+        
+    
+    
+            var circle_marker_cfa49af9c838b8dbb098336f5d9739d4 = L.circleMarker(
+                [51.52523491, 12.33504047],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_f0354f108ce5b4309d062278415ec172 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a5414fdf2696c99a9bb2cf4e3f4f0507 = $(`<div id="html_a5414fdf2696c99a9bb2cf4e3f4f0507" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_87</b> is <br> <u>Delitzsch, Germany</u></div>`)[0];
+                popup_f0354f108ce5b4309d062278415ec172.setContent(html_a5414fdf2696c99a9bb2cf4e3f4f0507);
+            
+        
+
+        circle_marker_cfa49af9c838b8dbb098336f5d9739d4.bindPopup(popup_f0354f108ce5b4309d062278415ec172)
+        ;
+
+        
+    
+    
+            var circle_marker_97090827ed63912d7627e68e3dc13336 = L.circleMarker(
+                [4.709849964, -74.07482424],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_b4c1af5034496264d5e8e1378b05aace = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_45d964deee66eff9c68145137f456f94 = $(`<div id="html_45d964deee66eff9c68145137f456f94" style="width: 100.0%; height: 100.0%;">The study area for <b>scopus_71</b> is <br> <u>BOGOTÁ, Colombia</u></div>`)[0];
+                popup_b4c1af5034496264d5e8e1378b05aace.setContent(html_45d964deee66eff9c68145137f456f94);
+            
+        
+
+        circle_marker_97090827ed63912d7627e68e3dc13336.bindPopup(popup_b4c1af5034496264d5e8e1378b05aace)
+        ;
+
+        
+    
+    
+            var circle_marker_a7fdb6813d419513db6719d9e8b61380 = L.circleMarker(
+                [43.66222349, -79.35211961],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_acf145687117b06b0f27894b9474f9c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae8cc8a40216759189df255ec4feda8a = $(`<div id="html_ae8cc8a40216759189df255ec4feda8a" style="width: 100.0%; height: 100.0%;">The study area for <b>sd_cst2_64</b> is <br> <u>Greater Toronto-Hamilton Area, Canada</u></div>`)[0];
+                popup_acf145687117b06b0f27894b9474f9c1.setContent(html_ae8cc8a40216759189df255ec4feda8a);
+            
+        
+
+        circle_marker_a7fdb6813d419513db6719d9e8b61380.bindPopup(popup_acf145687117b06b0f27894b9474f9c1)
+        ;
+
+        
+    
+    
+            var circle_marker_38319a6fd0146be7b3ffc501d4be30aa = L.circleMarker(
+                [34.77729568, 102.7119519],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_716bef0d2e6f5d0452873bd78542dd10 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ab335ccde0b68a78bdb49cb82879ed59 = $(`<div id="html_ab335ccde0b68a78bdb49cb82879ed59" style="width: 100.0%; height: 100.0%;">The study area for <b>sd_cst2_40</b> is <br> <u>China</u></div>`)[0];
+                popup_716bef0d2e6f5d0452873bd78542dd10.setContent(html_ab335ccde0b68a78bdb49cb82879ed59);
+            
+        
+
+        circle_marker_38319a6fd0146be7b3ffc501d4be30aa.bindPopup(popup_716bef0d2e6f5d0452873bd78542dd10)
+        ;
+
+        
+    
+    
+            var circle_marker_cbf9ed6434f25070d15d8111380e2236 = L.circleMarker(
+                [36.28161686, 49.9981725],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_713dc2e14967caa579db72733ee18240 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0e5a4f5e273a7c35f1080c8e8c26de9f = $(`<div id="html_0e5a4f5e273a7c35f1080c8e8c26de9f" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_8</b> is <br> <u>Qazvin, Iran</u></div>`)[0];
+                popup_713dc2e14967caa579db72733ee18240.setContent(html_0e5a4f5e273a7c35f1080c8e8c26de9f);
+            
+        
+
+        circle_marker_cbf9ed6434f25070d15d8111380e2236.bindPopup(popup_713dc2e14967caa579db72733ee18240)
+        ;
+
+        
+    
+    
+            var circle_marker_dbd4249a43688afd2637209136a25caa = L.circleMarker(
+                [44.98606692, -93.24633254],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_c4a28711c36fcca71c377fc91893caec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5f09cd5ee3bed898180ff845e9c996f1 = $(`<div id="html_5f09cd5ee3bed898180ff845e9c996f1" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_2</b> is <br> <u>Twin Cities of Minnesota, USA</u></div>`)[0];
+                popup_c4a28711c36fcca71c377fc91893caec.setContent(html_5f09cd5ee3bed898180ff845e9c996f1);
+            
+        
+
+        circle_marker_dbd4249a43688afd2637209136a25caa.bindPopup(popup_c4a28711c36fcca71c377fc91893caec)
+        ;
+
+        
+    
+    
+            var circle_marker_853f12ed79b942f733aa7f98b41af3d7 = L.circleMarker(
+                [6.691274307, -1.620580669],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_6f4cb6b5d4b42b81de9ac7fb5a429203 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ba85800d1f57481221ecafffa6121c1 = $(`<div id="html_6ba85800d1f57481221ecafffa6121c1" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_10</b> is <br> <u>Kumasi Metropolis in Ghana, Sub-Saharan Africa </u></div>`)[0];
+                popup_6f4cb6b5d4b42b81de9ac7fb5a429203.setContent(html_6ba85800d1f57481221ecafffa6121c1);
+            
+        
+
+        circle_marker_853f12ed79b942f733aa7f98b41af3d7.bindPopup(popup_6f4cb6b5d4b42b81de9ac7fb5a429203)
+        ;
+
+        
+    
+    
+            var circle_marker_a2858fce65c67a70c07d2db497e994c4 = L.circleMarker(
+                [51.34006644, 12.36890008],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1b26d57f11b2f250e5b64da94c1ef00a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e2a33178cb087117e250c3360423f4e7 = $(`<div id="html_e2a33178cb087117e250c3360423f4e7" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_1</b> is <br> <u>Leipzig, Germany</u></div>`)[0];
+                popup_1b26d57f11b2f250e5b64da94c1ef00a.setContent(html_e2a33178cb087117e250c3360423f4e7);
+            
+        
+
+        circle_marker_a2858fce65c67a70c07d2db497e994c4.bindPopup(popup_1b26d57f11b2f250e5b64da94c1ef00a)
+        ;
+
+        
+    
+    
+            var circle_marker_f7b1bbf12f86a10b0b2b108cfd45a882 = L.circleMarker(
+                [53.80326502, -1.546717914],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_d79af8bb100b8d69c5a36cd246afea42 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0ba6b3b4c499bac98c010fefc670868f = $(`<div id="html_0ba6b3b4c499bac98c010fefc670868f" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_4</b> is <br> <u>East and South East Leeds (EASEL) district in the UK</u></div>`)[0];
+                popup_d79af8bb100b8d69c5a36cd246afea42.setContent(html_0ba6b3b4c499bac98c010fefc670868f);
+            
+        
+
+        circle_marker_f7b1bbf12f86a10b0b2b108cfd45a882.bindPopup(popup_d79af8bb100b8d69c5a36cd246afea42)
+        ;
+
+        
+    
+    
+            var circle_marker_5dcfb1849ff31e50585c548471cb10ca = L.circleMarker(
+                [-6.186690994, 106.8267583],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1e51dfe7b46bf6da0bc55a056cea6d01 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9c1a0074486e8461255131581846cebe = $(`<div id="html_9c1a0074486e8461255131581846cebe" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_5</b> is <br> <u>Jakarta, Indonesia</u></div>`)[0];
+                popup_1e51dfe7b46bf6da0bc55a056cea6d01.setContent(html_9c1a0074486e8461255131581846cebe);
+            
+        
+
+        circle_marker_5dcfb1849ff31e50585c548471cb10ca.bindPopup(popup_1e51dfe7b46bf6da0bc55a056cea6d01)
+        ;
+
+        
+    
+    
+            var circle_marker_aed705a771a8b799b5bb23ac83321188 = L.circleMarker(
+                [53.79532347, -1.762947023],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_c3ac5db9cffb1c62b944d0de851407f8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_406d19c83c7155da9d86b8b62cbaff8b = $(`<div id="html_406d19c83c7155da9d86b8b62cbaff8b" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_6</b> is <br> <u>Bradford, UK </u></div>`)[0];
+                popup_c3ac5db9cffb1c62b944d0de851407f8.setContent(html_406d19c83c7155da9d86b8b62cbaff8b);
+            
+        
+
+        circle_marker_aed705a771a8b799b5bb23ac83321188.bindPopup(popup_c3ac5db9cffb1c62b944d0de851407f8)
+        ;
+
+        
+    
+    
+            var circle_marker_c72e157795d3e304f5657999ce9b69a8 = L.circleMarker(
+                [-23.55351439, -46.6408995],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_9549233c765fc17c34e6bca9815e1c67 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a10c58cc9b615e15018306da80204327 = $(`<div id="html_a10c58cc9b615e15018306da80204327" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_22</b> is <br> <u>Sao Paulo, Brazil</u></div>`)[0];
+                popup_9549233c765fc17c34e6bca9815e1c67.setContent(html_a10c58cc9b615e15018306da80204327);
+            
+        
+
+        circle_marker_c72e157795d3e304f5657999ce9b69a8.bindPopup(popup_9549233c765fc17c34e6bca9815e1c67)
+        ;
+
+        
+    
+    
+            var circle_marker_57e152e39e3d72cb0d016e0a031148be = L.circleMarker(
+                [31.78227248, 35.21759231],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_92d21f1421f46ccdbeb3d880cbadc216 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3693d49687fb409da60f14b34fdd08b8 = $(`<div id="html_3693d49687fb409da60f14b34fdd08b8" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_76</b> is <br> <u>Downtown Jerusalem, Israeli</u></div>`)[0];
+                popup_92d21f1421f46ccdbeb3d880cbadc216.setContent(html_3693d49687fb409da60f14b34fdd08b8);
+            
+        
+
+        circle_marker_57e152e39e3d72cb0d016e0a031148be.bindPopup(popup_92d21f1421f46ccdbeb3d880cbadc216)
+        ;
+
+        
+    
+    
+            var circle_marker_24977f2fe6b92366a94bcb04313c67f1 = L.circleMarker(
+                [35.73573476, 51.32303729],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_059bd6d68defdafbdbecbb7187fb74d0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d5e28b7ba88b7831254e20630f380792 = $(`<div id="html_d5e28b7ba88b7831254e20630f380792" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_13</b> is <br> <u>Tehran, Iran </u></div>`)[0];
+                popup_059bd6d68defdafbdbecbb7187fb74d0.setContent(html_d5e28b7ba88b7831254e20630f380792);
+            
+        
+
+        circle_marker_24977f2fe6b92366a94bcb04313c67f1.bindPopup(popup_059bd6d68defdafbdbecbb7187fb74d0)
+        ;
+
+        
+    
+    
+            var circle_marker_8056b0a79034b993840302a5f22038c8 = L.circleMarker(
+                [38.87874127, 115.4452033],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_a0e066fa0591ead20d337b1956db10c5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5ebbc687ebfa919bdbad2b31b46b50c4 = $(`<div id="html_5ebbc687ebfa919bdbad2b31b46b50c4" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_69</b> is <br> <u>Baoding, China</u></div>`)[0];
+                popup_a0e066fa0591ead20d337b1956db10c5.setContent(html_5ebbc687ebfa919bdbad2b31b46b50c4);
+            
+        
+
+        circle_marker_8056b0a79034b993840302a5f22038c8.bindPopup(popup_a0e066fa0591ead20d337b1956db10c5)
+        ;
+
+        
+    
+    
+            var circle_marker_761ff57fd55f3e6d14a14caec2ea1ed7 = L.circleMarker(
+                [48.21110746, 16.37961293],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_7a125502323d6a90cf898a4b213a7c33 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_11e66e99d29af74718f2400e48dba775 = $(`<div id="html_11e66e99d29af74718f2400e48dba775" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_17</b> is <br> <u>Vienna, Austria</u></div>`)[0];
+                popup_7a125502323d6a90cf898a4b213a7c33.setContent(html_11e66e99d29af74718f2400e48dba775);
+            
+        
+
+        circle_marker_761ff57fd55f3e6d14a14caec2ea1ed7.bindPopup(popup_7a125502323d6a90cf898a4b213a7c33)
+        ;
+
+        
+    
+    
+            var circle_marker_cd008e506c37f5ed77a41ed70cdd6ff4 = L.circleMarker(
+                [-36.85102186, 174.7679002],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_1a334c8b58b3b0e004ca531cdbfd59e0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_85fec55191dd5a0aa779d48d7d488465 = $(`<div id="html_85fec55191dd5a0aa779d48d7d488465" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_52</b> is <br> <u>Auckland, New Zealand</u></div>`)[0];
+                popup_1a334c8b58b3b0e004ca531cdbfd59e0.setContent(html_85fec55191dd5a0aa779d48d7d488465);
+            
+        
+
+        circle_marker_cd008e506c37f5ed77a41ed70cdd6ff4.bindPopup(popup_1a334c8b58b3b0e004ca531cdbfd59e0)
+        ;
+
+        
+    
+    
+            var circle_marker_ccbbc9c30a12717b98a62d64e59af1ef = L.circleMarker(
+                [47.23614202, 6.017026985],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_f407491cc7464e376af0aefca3217159 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_779bd33335cd6ceb0add46cebef3b1b0 = $(`<div id="html_779bd33335cd6ceb0add46cebef3b1b0" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_14</b> is <br> <u>Besançon, France</u></div>`)[0];
+                popup_f407491cc7464e376af0aefca3217159.setContent(html_779bd33335cd6ceb0add46cebef3b1b0);
+            
+        
+
+        circle_marker_ccbbc9c30a12717b98a62d64e59af1ef.bindPopup(popup_f407491cc7464e376af0aefca3217159)
+        ;
+
+        
+    
+    
+            var circle_marker_f66b2188e735d232659ea36fb5a0f9ca = L.circleMarker(
+                [5.01983622, -1.627777972],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3db7e4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a);
+        
+    
+        var popup_8a8dfb4dfa4032b4b08c4f7a442fbc09 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d6f1d802c6c07a9f0ca8f85bb645e912 = $(`<div id="html_d6f1d802c6c07a9f0ca8f85bb645e912" style="width: 100.0%; height: 100.0%;">The study area for <b>wos_15</b> is <br> <u>Shama, Ghana</u></div>`)[0];
+                popup_8a8dfb4dfa4032b4b08c4f7a442fbc09.setContent(html_d6f1d802c6c07a9f0ca8f85bb645e912);
+            
+        
+
+        circle_marker_f66b2188e735d232659ea36fb5a0f9ca.bindPopup(popup_8a8dfb4dfa4032b4b08c4f7a442fbc09)
+        ;
+
+        
+    
+    
+            marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a.addTo(map_77be3dce3d0fb662617d025a1f0dfdcf);
+        
+    
+            var layer_control_8c68f3792a8f3934f869a81430a469d4_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_528489454f1c4819a9e9138831309d66,
+                },
+                overlays :  {
+                    "macro_element_9a53665bfc8065fa5690e3e89d9fe39a" : marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a,
+                },
+            };
+            let layer_control_8c68f3792a8f3934f869a81430a469d4 = L.control.layers(
+                layer_control_8c68f3792a8f3934f869a81430a469d4_layers.base_layers,
+                layer_control_8c68f3792a8f3934f869a81430a469d4_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_77be3dce3d0fb662617d025a1f0dfdcf);
+
+        
+    
+            tile_layer_528489454f1c4819a9e9138831309d66.addTo(map_77be3dce3d0fb662617d025a1f0dfdcf);
+        
+    
+            marker_cluster_9a53665bfc8065fa5690e3e89d9fe39a.addTo(map_77be3dce3d0fb662617d025a1f0dfdcf);
+        
+</script>
+</html>

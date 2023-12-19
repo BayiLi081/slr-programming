@@ -19,6 +19,9 @@ def cleantext(text):
     # use regex to remove all the non-alphanumeric characters, but keep the "," and "." and line break "\n"
     text = re.sub(r'[^a-zA-Z0-9\n\.\,]', ' ', text)
 
+    # remove the number.num for example "five.pnum" from the text using regular expression
+    text = re.sub(r'\b\w+\.pnum\b', '', text)
+
 
     # remove multiple spaces
     text = re.sub(r' +', ' ', text)
