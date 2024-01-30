@@ -1,0 +1,306 @@
+---
+title: "Systematic Literature Review for Urbanism"
+author: "Bayi Li"
+date: "2024-01-29"
+output: html_document
+---
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- remove wd code chunks below -->
+
+```{r check working directory}
+getwd()
+```
+
+```{r set working directory}
+setwd("/Users/bayili/Library/CloudStorage/OneDrive-DelftUniversityofTechnology/slr4urbanism/slr-programming")
+```
+
+
+
+
+## Load data (already extracted from PDFs)
+
+
+## 1. Mapping case study locations
+
+Input: 
+- manual
+- extracting location from title
+- extracting location from abstract
+- if multiple locations are mentioned, multiple records are created
+
+Output:
+- interactive map with Leaflet
+- tiled grid map with template available for QGIS as well
+
+
+
+## 2. Keyword wordclouds
+
+Input: keywords
+
+Output: Word clouds - can be overall or per time period
+
+
+
+## 3. Text mining
+
+Input: Full text, machine readable (this requires text to be extracted from PDFs prior to analysis)
+
+### 3.1 Word cooccureence
+
+What questions co-occur with a specific word of interest, e.g., segregation?
+
+- using the LDA model and top words
+- using word embeddings
+
+Output: A bar chart with top words related to the word of interest
+
+### 3.2 Topic modeling
+
+- using LDA to identify dominant topics in a corpus of papers
+
+#### 3.2.1 Topics across the corpus
+
+Output: Bar charts showing top words in each topic
+
+#### 3.2.2 Evolution of topics
+
+Output: A line chart showing the relative importance of topics for a given period.
+
+
+
+
+
+
+
+
+
+
+```{r load libraries}
+
+# Extrat the txt from the pdf
+
+```{r library}
+library(tidyverse)
+library(pdftools)
+```
+
+```{r extracttxt}
+files <- list.files(path = "data/collection/PDFs", pattern = "*.pdf", full.names = TRUE)
+
+my_list_output <- list()
+
+for (file in files){
+  # Extract text from the PDF
+  text <- pdftools::pdf_text(file)
+  # Split each line of text for every new line
+  lines <- strsplit(text, "\n")[[1]]
+  # list to store each new line of information in a key value pair
+  info_list <- lapply(strsplit(lines, ": "), function(x) setNames(x[1], x[2]))
+  # take the output lines in a single column of a data frame
+  df <- do.call(rbind, info_list)
+  # remove rows with NA
+  df_cleaned <- na.omit(df)
+  # select 4th row to end of the data frame
+  df_rows <- data.frame(df_cleaned[4:nrow(df_cleaned), ])
+  # rename single column of the dataframe
+  names(df_rows) = c("Values")
+  # remove leading and trailing spaces
+  df_rows$Values <- trimws(df_rows$Values)
+  # remove leading and trailing spaces
+  df_rows$Values <- str_replace_all(df_rows$Values, "\\s+", " ")
+  
+  # select each row which is currently a character string separated by spaces
+  # split each character from the string and recombine them with "-" separator
+  # in the process we need to unlist and list the observations of each row
+  process_row <- function(row) {
+    mylist = row["Values"]
+    mylist1 = paste0(unlist(as.list(unlist(strsplit(mylist, '[[:space:]]')))), collapse = "-")
+    return(mylist1)
+  }
+  
+  # apply the above function for all rows in the data-frame
+  df_rows$ConcatenatedValues <- apply(df_rows, 1, process_row)
+  
+  # take 1st row value of df_cleaned which looks like unique identifier of the file
+  id_value = df_cleaned[[1]]
+  
+  # extract the metric enclosed within parenthesis ()
+  # find position of the string )- after which the metric value is mentioned for each row
+  # extract the string of metric value bounded by "-" before and after
+  # replace "," with decimal dot for each metric value
+  # convert character string to numeric
+  # transpose the metric as key and corresponding values grouped by the id variable
+  # remove the second column which looks to be NA
+  df_transformed = df_rows %>%
+    extract(ConcatenatedValues, into = c("Metric"), regex = "\\(([^)]+)\\)", remove = FALSE) %>%
+    mutate(StringPosition = str_locate(ConcatenatedValues, "\\)-")) %>%
+    mutate(len = nchar(ConcatenatedValues)) %>%
+    mutate(string = str_sub(ConcatenatedValues, start=StringPosition[,"end"], end=len)) %>%
+    extract(string, into = c("Metric_Value"), regex = "\\-([^)]+)\\-", remove = FALSE) %>%
+    select(Values, Metric, Metric_Value) %>%
+    mutate(Metric_Value = str_replace(Metric_Value, ",", ".")) %>%
+    mutate(Metric_Value = as.numeric(Metric_Value)) %>%
+    mutate(id = id_value) %>%
+    select(id, Metric, Metric_Value) %>%
+    pivot_wider(names_from = Metric, values_from = Metric_Value) %>%
+    select(-2)
+  
+  # store the output of each file in an empty list which can be accessed based on index
+  my_list_output[[file]] <- df_transformed
+}
+
+## Remove unwanted objects from environment
+rm(file, files, id_value, lines, text)
+rm(df_rows, df_cleaned, df, info_list, process_row)
+
+my_list_output <- apply(my_list_output,2,as.character)
+
+# save the list as txt
+write.table(my_list_output, file = "data/collection/textdf.txt", sep = "\t", row.names = FALSE)
+```
+
+```{r extracttxt}
+fs::dir_ls("data/collection/PDFs") %>% 
+  as.character() %>% 
+  as_tibble() %>% 
+  mutate(text = map_chr(value, function(x){
+    pdftools::pdf_text(x) %>% 
+      paste0(collapse = "") %>% 
+      str_remove_all("[\\s\\n\\t\\d[a-z].]")
+  })) -> textdf
+
+textdf %>% 
+  write_csv("data/collection/textdf.csv")
+
+textdf
+```
+
+```{r save as txt}
+
+
+# Systematic Literature Review for Urbanism
+
+## Using Revtools to sort out the collection of papers
+
+https://revtools.net/data.html#importing-to-r
+
+It can only take bib or Ris files, so we just redownload the wos collection as bib file.
+
+
+
+Description in the paper:
+
+> The search terms “urban resilience” and “resilient cities”
+
+> First, Elsevier’s Scopus and Thompson Reuters Web of Science (WoS) citation databases were used to identify the literature on urban resilience over a 41-year period, beginning in 1973 (when Holling wrote his seminal article on resilience) and ending in 2013. 
+
+> Although relatively comprehensive, these databases do not generally include books, and by focusing mainly on Englishlanguage publications,
+
+Searching sytax:
+
+> generate a preliminary search expression using ChatGPT
+
+Example of question for ChatGPT could be: (Meerow et al., 2016)
+
+—
+generate query string of Scopus (Web of Science) database on the search term “urban resilience” and “resilient cities” from 1973 to 2013, excluding books and including only English-language publications
+—
+The return answer from GPT as following:
+For Scopus database
+—
+( TITLE-ABS-KEY ( "urban resilience" ) OR TITLE-ABS-KEY ( "resilient cities" ) ) AND PUBYEAR > 1972 AND PUBYEAR < 2014 AND NOT DOCTYPE ( bk ) AND ( LIMIT-TO ( LANGUAGE , "English" ) )
+—
+For WOS database
+—
+TS=("urban resilience" OR "resilient cities") AND PY=1973-2013 AND LA=English NOT DT=Book
+—
+Using the query string recommended to search on the scopus database, we can find that 176 (Scopus) and 136 (Web of Science) are found separately. There are some deviation of amount of returned results (“The search terms “urban resilience” and “resilient cities” yielded 139 results in Scopus and 100 in WoS.”), but we can assume that it is due to the authors limited to special discipline, or the exact date of seach was conducted during a certain day of 2013. Thus, more literatures in late 2013 were not included.
+
+
+In paper:
+
+139 Scopus
+100 Wos
+172 After dropping the duplictes
+
+Our search:
+
+172 Scopus
+136 WoS
+247 After dropping the duplicates
+
+```{r library}
+library(revtools)
+```
+
+```{r}
+# read the wos collection txt file
+## data_scopus <- read.csv("./sample-data/raw-data/raw_scopus_result.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+# Read a text file as a data frame
+## data_wos <- read.table("./sample-data/raw-data/raw_wos_result.txt", header = TRUE, sep = "\t", fill = TRUE)
+
+data_wos <- read_bibliography("./sample-data/raw-data/raw_wos_result.bib")
+# rename the column "cited_references" to "references"
+colnames(data_wos)[colnames(data_wos) == "cited_references"] <- "references"
+
+data_scopus <- read_bibliography("./sample-data/raw-data/raw_scopus_result.csv")
+data_all <- merge_columns(data_wos, data_scopus)
+```
+
+
+
+```{r}
+colnames(data_wos)
+```
+```{r}
+colnames(data_scopus)
+```
+
+```{r}
+matches_title <- find_duplicates(data_all, match_variable = "title", method = "lv", threshold = 2)
+
+data_unique <- extract_unique_references(data_all, matches_title)
+```
+
+```{r}
+# save the data as bib
+write_bibliography(data_unique, "./sample-data/processed-data/unique_merged.bib")
+# save the data as csv
+write.csv(data_unique, "./sample-data/processed-data/unique_merged.csv")
+```
+
+```{r}
+library(bibliometrix)
+```
+
+```{r}
+# read the bib file
+# data <- read_bibliography("./sample-data/processed-data/unique_merged.bib")
+# read the csv file
+# data <- read.csv("./sample-data/processed-data/unique_merged.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+
+data <- convert2df(file = "./sample-data/processed-data/unique_merged.csv", dbsource = "scopus", format = "csv")
+```
+
+```{r}
+results <- biblioAnalysis(data)
+```
+
+```{r}
+
+```
+
+```{r}
+```
+
+```{r}
+```
+
