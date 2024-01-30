@@ -14,3 +14,8 @@ The code is under [extract_txt](extract_txt/) folder and the main codes is in th
 ## The example database 
 
 It comes from the literature collection whose topic is "Agent-based modelling of urban economic segregation" 
+
+```bash
+python -m PyPaperBot --doi-file="data/sample-data/pure_doi.txt" --dwn-dir="data/collection/PDFs" --scihub-mirror="https://sci-hub.se/"
+```
+
