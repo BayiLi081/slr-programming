@@ -34,6 +34,34 @@ Output:
 - interactive map with Leaflet
 - tiled grid map with template available for QGIS as well
 
+Required packages: leaflet, rgdal, sp, rgeos, maptools, ggplot2, ggthemes, ggmap, gridExtra, grid, RColorBrewer, scales, viridis, viridisLite, mapview, tmap, tmaptools, tmapthemes, tmaputi
+
+```{r libraries, echo=FALSE, message=FALSE, warning=FALSE}
+library(geojsonio)
+library(leaflet)
+# plot the selected are with sp
+library(sp)
+```
+
+```{r}
+spdf <- geojson_read("data/map_basis/Tile-Grid-Map-Cleaned.geojson",  what = "sp")
+```
+
+
+
+```{r map, echo=FALSE, message=FALSE, warning=FALSE}
+par(mar=c(0,0,0,0))
+plot(spdf, col="grey")
+# add labels using the column 'alpha.2' from the spdf data frame, the x y columns from 'coord_x' and 'coord_y'
+text(spdf$coord_x, spdf$coord_y, labels = spdf$alpha.2, cex = 0.5)
+```
+
+
+
+
+```{r map, echo=FALSE, message=FALSE, warning=FALSE}
+
+
 
 
 ## 2. Keyword wordclouds
@@ -41,6 +69,83 @@ Output:
 Input: keywords
 
 Output: Word clouds - can be overall or per time period
+
+Required packages: wordcloud, (wordcloud2), RColorBrewer, tm
+
+```{r libraries, echo=FALSE, message=FALSE, warning=FALSE}
+library(wordcloud)
+library(RColorBrewer)
+library(wordcloud2)
+library(tm)
+```
+
+Read the data. 
+
+To explore the keywords, we need to extract the three columns "id", "Keywords.Plus", "Year" from the data frame.
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+df <- read.csv("data/collection/final_combined.csv", header = TRUE, sep = ",")
+
+# extract the three columns "id", "Keywords.Plus", "Year"
+df_1 <- df[, c("id", "Keywords.Plus", "Year")]
+```
+
+```{r data cleaning, echo=FALSE, message=FALSE, warning=FALSE}
+# rename "Keywords.Plus" to "Keywords"
+names(df_1)[names(df_1) == "Keywords.Plus"] <- "Keywords"
+
+# remove the rows with NA or empty in the column "Keywords"
+df_1 <- df_1[!is.na(df_1$Keywords) & df_1$Keywords != "", ]
+
+# reset the row index
+rownames(df_1) <- NULL
+
+df_1
+```
+
+```{r corpus, echo=FALSE, message=FALSE, warning=FALSE}
+# create a corpus
+corpus <- Corpus(VectorSource(df_1$Keywords))
+
+# convert the corpus to lower case
+corpus <- tm_map(corpus, tolower)
+
+# remove punctuation
+corpus <- tm_map(corpus, removePunctuation)
+
+# remove numbers
+corpus <- tm_map(corpus, removeNumbers)
+
+# remove whitespace
+corpus <- tm_map(corpus, stripWhitespace)
+
+# remove stopwords (i.e., less than 3 characters)
+corpus <- tm_map(corpus, removeWords, c("segregation", "and", "the", "for", "are", "was", "has", "can", "not", "but", "all", "any", "this", "that", "with", "from", "which", "who", "how", "why", "when", "where", "what", "who", "will", "would", "could", "should", "may", "might", "must", "shall", "should", "have", "had", "has", "been", "were", "was", "be", "is", "are", "a", "an", "of", "on", "in", "to", "as", "at", "by", "or", "if", "it", "its", "their", "they", "them", "there", "then", "than", "so", "no", "yes", "up", "down", "out", "into", "over", "under", "between", "through", "about", "after", "before", "between", "under", "over", "above", "below", "through", "across", "against", "along", "around", "behind", "beneath", "beside", "besides", "beyond", "during", "except", "inside", "near", "off", "onto", "outside", "since", "toward", "underneath", "until", "upon", "within", "without", "upon"))
+```
+
+```{r dtm, echo=FALSE, message=FALSE, warning=FALSE}
+# create a document term matrix
+dtm <- TermDocumentMatrix(corpus)
+
+# convert the document term matrix to a matrix
+m <- as.matrix(dtm)
+
+# calculate the frequency of each word
+words <- sort(rowSums(m), decreasing = TRUE)
+
+# create a data frame with two columns: word and frequency
+df1_feq <- data.frame(word = names(words), freq = words)
+
+# delete intermedia variables
+rm(corpus, dtm, m, words)
+```
+
+
+```{r wordcloud, echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(1234) # for reproducibility 
+wordcloud(words = df1_feq$word, freq = df1_feq$freq, min.freq = 2, max.words=200, random.order=FALSE, rot.per=0.35,            colors=brewer.pal(8, "Dark2"))
+```
+
 
 
 
