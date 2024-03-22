@@ -23,9 +23,51 @@ library(LDAvis)
 library(SnowballC)
 ```
 
+<!-- TODO: add explanations and clean code chunks -->
+
 ## Extract data
 
 <!-- Add text extraction script or reference to Python code -->
+
+```{r extract-text-from-pdf, message=FALSE}
+# Set up and use Python for PDF text extraction
+reticulate::virtualenv_create(envname = "myenv", python = install_python())
+reticulate::py_install("PyMuPDF == 1.21.0", envname = "myenv")
+reticulate::use_virtualenv("myenv")
+reticulate::source_python("extract-text-from-pdf.py")
+
+data_root <- "data/collection/PDFs/"
+
+# Get PDF file paths
+pdf_paths <- list.files(data_root, full.names = TRUE, pattern = "*.pdf$")
+
+# url <- "https://osf.io/ds83p/metadata/?format=datacite-json&view_only=70fab91afab747d685eca7ed5b8d88f8"
+# download.file(url, destfile = "data/collection/PDFs/temp-osf/", method = "curl")
+
+# Extract text from PDFs
+text <- convert_pdf(pdf_paths) |> unlist()
+
+doc_names <- list.files(data_root, full.names = TRUE, pattern = "*.pdf")
+
+df <- tibble(doc = str_sub(list.files(data_root, pattern = "*.pdf"), 1, -5L), text) |> 
+  mutate(text = str_replace_all(text, "^[0-9]*$", ""))
+```
+
+```{r tokens, warning=FALSE}
+words <- unnest_tokens(df, word, text) |>
+  filter(is.na(readr::parse_number(word))) |>  # Remove numbers
+  anti_join(stop_words, by = "word") |>  # Remove English stop words
+  # anti_join(custom_stop_words, by = "word") |>  # Remove custom stop words
+  dplyr::filter(nchar(word) >= 4)  # remove words of max. 3 characters
+```
+
+```{r tokens-rank}
+words_count <- words |> 
+  count(word) |> 
+  arrange(desc(n))
+
+words_count
+```
 
 ## Load data
 
@@ -195,9 +237,9 @@ words <- data |>
 
 ```{r dtm}
 dtm <- words |>
-    count(id, word, sort = TRUE) |>
+    count(doc, word, sort = TRUE) |>
     filter(n > 5) |>  # minimum term frequency 5
-    cast_dtm(id, word, n)
+    cast_dtm(doc, word, n)
 ```
 
 ```{r k}
@@ -365,100 +407,4 @@ ggplot(word_order,
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 15))
 ```
-
-
-<!-- ```{r extracttxt} -->
-<!-- files <- list.files(path = "data/collection/PDFs", pattern = "*.pdf", full.names = TRUE) -->
-
-<!-- my_list_output <- list() -->
-
-<!-- for (file in files){ -->
-<!--   # Extract text from the PDF -->
-<!--   text <- pdftools::pdf_text(file) -->
-<!--   # Split each line of text for every new line -->
-<!--   lines <- strsplit(text, "\n")[[1]] -->
-<!--   # list to store each new line of information in a key value pair -->
-<!--   info_list <- lapply(strsplit(lines, ": "), function(x) setNames(x[1], x[2])) -->
-<!--   # take the output lines in a single column of a data frame -->
-<!--   df <- do.call(rbind, info_list) -->
-<!--   # remove rows with NA -->
-<!--   df_cleaned <- na.omit(df) -->
-<!--   # select 4th row to end of the data frame -->
-<!--   df_rows <- data.frame(df_cleaned[4:nrow(df_cleaned), ]) -->
-<!--   # rename single column of the dataframe -->
-<!--   names(df_rows) = c("Values") -->
-<!--   # remove leading and trailing spaces -->
-<!--   df_rows$Values <- trimws(df_rows$Values) -->
-<!--   # remove leading and trailing spaces -->
-<!--   df_rows$Values <- str_replace_all(df_rows$Values, "\\s+", " ") -->
-
-<!--   # select each row which is currently a character string separated by spaces -->
-<!--   # split each character from the string and recombine them with "-" separator -->
-<!--   # in the process we need to unlist and list the observations of each row -->
-<!--   process_row <- function(row) { -->
-<!--     mylist = row["Values"] -->
-<!--     mylist1 = paste0(unlist(as.list(unlist(strsplit(mylist, '[[:space:]]')))), collapse = "-") -->
-<!--     return(mylist1) -->
-<!--   } -->
-
-<!--   # apply the above function for all rows in the data-frame -->
-<!--   df_rows$ConcatenatedValues <- apply(df_rows, 1, process_row) -->
-
-<!--   # take 1st row value of df_cleaned which looks like unique identifier of the file -->
-<!--   id_value = df_cleaned[[1]] -->
-
-<!--   # extract the metric enclosed within parenthesis () -->
-<!--   # find position of the string )- after which the metric value is mentioned for each row -->
-<!--   # extract the string of metric value bounded by "-" before and after -->
-<!--   # replace "," with decimal dot for each metric value -->
-<!--   # convert character string to numeric -->
-<!--   # transpose the metric as key and corresponding values grouped by the id variable -->
-<!--   # remove the second column which looks to be NA -->
-<!--   df_transformed = df_rows %>% -->
-<!--     extract(ConcatenatedValues, into = c("Metric"), regex = "\\(([^)]+)\\)", remove = FALSE) %>% -->
-<!--     mutate(StringPosition = str_locate(ConcatenatedValues, "\\)-")) %>% -->
-<!--     mutate(len = nchar(ConcatenatedValues)) %>% -->
-<!--     mutate(string = str_sub(ConcatenatedValues, start=StringPosition[,"end"], end=len)) %>% -->
-<!--     extract(string, into = c("Metric_Value"), regex = "\\-([^)]+)\\-", remove = FALSE) %>% -->
-<!--     select(Values, Metric, Metric_Value) %>% -->
-<!--     mutate(Metric_Value = str_replace(Metric_Value, ",", ".")) %>% -->
-<!--     mutate(Metric_Value = as.numeric(Metric_Value)) %>% -->
-<!--     mutate(id = id_value) %>% -->
-<!--     select(id, Metric, Metric_Value) %>% -->
-<!--     pivot_wider(names_from = Metric, values_from = Metric_Value) %>% -->
-<!--     select(-2) -->
-
-<!--   # store the output of each file in an empty list which can be accessed based on index -->
-<!--   my_list_output[[file]] <- df_transformed -->
-<!-- } -->
-
-<!-- ## Remove unwanted objects from environment -->
-<!-- rm(file, files, id_value, lines, text) -->
-<!-- rm(df_rows, df_cleaned, df, info_list, process_row) -->
-
-<!-- my_list_output <- apply(my_list_output,2,as.character) -->
-
-<!-- # save the list as txt -->
-<!-- write.table(my_list_output, file = "data/collection/textdf.txt", sep = "\t", row.names = FALSE) -->
-<!-- ``` -->
-
-<!-- ```{r extracttxt} -->
-<!-- fs::dir_ls("data/collection/PDFs") %>%  -->
-<!--   as.character() %>%  -->
-<!--   as_tibble() %>%  -->
-<!--   mutate(text = map_chr(value, function(x){ -->
-<!--     pdftools::pdf_text(x) %>%  -->
-<!--       paste0(collapse = "") %>%  -->
-<!--       str_remove_all("[\\s\\n\\t\\d[a-z].]") -->
-<!--   })) -> textdf -->
-
-<!-- textdf %>%  -->
-<!--   write_csv("data/collection/textdf.csv") -->
-
-<!-- textdf -->
-<!-- ``` -->
-
-
-
-
 
